@@ -1,4 +1,4 @@
-function Sidebar() {
+export default function Sidebar() {
   return (
     <div className="game">
       <div className="header-wrapper">
@@ -79,7 +79,7 @@ function Sidebar() {
           height="200px"
           extensions={[javascript({ jsx: true })]}
           onChange={(value, viewUpdate) => {
-            console.log('value:', value);
+            console.log('value:', value)
           }}
         />
 
@@ -146,7 +146,5 @@ function Sidebar() {
         <iframe className="canvas" id="canvas" src="canvas.html" frameBorder="0"></iframe>
       </section>
     </div>
-  );
+  )
 }
-
-export default Sidebar;

@@ -67,4 +67,4 @@ let levels = [
     solutions: ["console.log('level four')"],
     hints: ['Lorem ipsum'],
   },
-];
+]

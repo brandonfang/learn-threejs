@@ -1,8 +1,19 @@
-import './App.css';
-import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
+import React, { useState, useEffect } from 'react'
+import './App.css'
+import CodeMirror from '@uiw/react-codemirror'
+import { javascript } from '@codemirror/lang-javascript'
 
-export default function App() {
+export default function App() { 
+  const [editorValue, setEditorValue] = useState(null)
+
+  useEffect(() => {
+    fetch('http://localhost:80/')
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+
+
+  }, [])
+
   return (
     <>
       <CodeMirror
@@ -10,9 +21,9 @@ export default function App() {
         height="200px"
         extensions={[javascript({ jsx: true })]}
         onChange={(value, viewUpdate) => {
-          console.log('value:', value);
+          console.log('value:', value)
         }}
       />
     </>
-  );
+  )
 }
