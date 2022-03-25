@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import './App.css'
 import CodeMirror from '@uiw/react-codemirror'
 import { javascript } from '@codemirror/lang-javascript'
+import { oneDark } from '@codemirror/theme-one-dark'
+// import 'codemirror/theme/dracula.css'
 
-export default function App() { 
-  const [editorValue, setEditorValue] = useState(null)
+
+export default function App() {
+  const [code, setCode] = useState("const a = 0;")
 
   useEffect(() => {
-    fetch('http://localhost:80/')
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-
-
+    axios
+      .post('/javascript')
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err))
   }, [])
 
   return (
     <>
       <CodeMirror
-        value="console.log('hello world!');"
-        height="200px"
+        value={code}
         extensions={[javascript({ jsx: true })]}
         onChange={(value, viewUpdate) => {
           console.log('value:', value)
         }}
+        theme={oneDark}
       />
     </>
   )
